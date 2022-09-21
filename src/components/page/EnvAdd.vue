@@ -23,9 +23,9 @@
                                 <br/>
                                 <br/>测试、预发布、生产环境域名不一样，接口地址一样，可以实现多环境接口测试！
                             </div>
-                            <el-button icon='el-icon-question' type="text" style='padding: 0 17px 0 0'></el-button>
+                            <el-button icon='el-icon-question' type="text" style='padding: 0 16px 0 0'></el-button>
                         </el-tooltip>
-                        <el-input v-model="form.base_url" style="width: 94%;" @focus="clearValidate('tester') " clearable></el-input>
+                        <el-input v-model="form.base_url" style="width: 94.3%;" @focus="clearValidate('tester') " clearable></el-input>
                     </el-form-item>
 
                     <el-form-item label="简要描述" prop="desc">
