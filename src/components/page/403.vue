@@ -1,13 +1,4 @@
 <template>
-
-
-
-
-
-
-
-
-
   <div class="error-page">
       <div class="error-code">4<span>0</span>3</div>
       <div class="error-desc">啊哦~ 你没有权限访问该页面哦</div>
