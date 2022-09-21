@@ -9,13 +9,13 @@
         <div class="container">
             <div class="form-box">
                 <el-form ref="form" :rules="rules" :model="form" label-width="100px" label-position='left'>
-                    <el-form-item label="环境名称" prop="name" required>
+                    <el-form-item label="环境名称" prop="name">
 
                         <el-input v-model="form.name" @focus="clearValidate('name')" clearable></el-input>
                     </el-form-item>
 
-                    <el-form-item label="请求域名" prop="base_url" required label-width='80px'>
-                        <el-tooltip class="item" effect="light" placement="bottom" style='padding-right: 6px'>
+                    <el-form-item label="请求域名" prop="base_url"  label-width='70px' class='item'>
+                        <el-tooltip class="item" effect="light" placement="bottom">
                             <div slot="content" style='font-size: 13px;'>
                                 接口地址：https://test-qmyxcg.myscrm.com.cn/page/ditch/rule_set.shtml
                                 <br/>请求域名：https://test-qmyxcg.myscrm.com.cn
@@ -23,12 +23,12 @@
                                 <br/>
                                 <br/>测试、预发布、生产环境域名不一样，接口地址一样，可以实现多环境接口测试！
                             </div>
-                            <el-button icon='el-icon-question' type="text"></el-button>
+                            <el-button icon='el-icon-question' type="text" style='padding: 0 17px 0 0'></el-button>
                         </el-tooltip>
-                        <el-input v-model="form.base_url" style="width: 96%;" @focus="clearValidate('tester') " clearable></el-input>
+                        <el-input v-model="form.base_url" style="width: 94%;" @focus="clearValidate('tester') " clearable></el-input>
                     </el-form-item>
 
-                    <el-form-item label="简要描述" prop="desc" required>
+                    <el-form-item label="简要描述" prop="desc">
                         <el-input type="textarea" rows="4" v-model="form.desc" clearable></el-input>
                     </el-form-item>
 
@@ -73,7 +73,7 @@
                 },
                 rules: {
                     name: [
-                        { validator: validateName, trigger: 'blur' }
+                        { validator: validateName, required: true, trigger: 'blur' }
                     ],
                     base_url: [
                         { required: true, message: '请输入请求域名', trigger: 'blur' }
@@ -136,3 +136,13 @@
         }
     }
 </script>
+
+<style>
+.item .el-form-item__label{
+    padding-right: 0;
+}
+
+.item .el-form-item__error{
+    padding-left: 30px;
+}
+</style>
