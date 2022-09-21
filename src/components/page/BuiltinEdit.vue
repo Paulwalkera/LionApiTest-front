@@ -43,7 +43,7 @@
             next()
         },
         beforeRouteUpdate (to, from, next) {
-            // 路由在同组件之间更新之前被调用
+            // 路由在同组件之间更新之前被调用xxxxxxxxxxxx
             this.debugtalk_id = to.params.id;
             // console.log("before route update")
             // console.log(to);
