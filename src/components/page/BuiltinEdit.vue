@@ -41,6 +41,10 @@
                 vm.getCode();
             });
             next()
+
+
+
+
         },
         beforeRouteUpdate (to, from, next) {
             // 路由在同组件之间更新之前被调用
