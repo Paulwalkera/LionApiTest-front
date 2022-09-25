@@ -161,6 +161,12 @@ let router = new Router({
                     meta: { title: '403' },
                     name: '403'
                 },
+                {
+                    path: '/test',
+                    component: resolve => require(['../components/page/test.vue'], resolve),
+                    meta: { title: 'test' },
+                    name: 'test'
+                },
 
             ]
         },

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-row :gutter="50">
+        <el-row :gutter="50" style='width: 100%'>
             <el-col :span="8">
                 <el-card shadow="hover" class="mgb20" style="height:252px;">
                     <div class="user-info">
@@ -270,8 +270,8 @@
     }
 
     .user-avator {
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
         border-radius: 50%;
     }
 
