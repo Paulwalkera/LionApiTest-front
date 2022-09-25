@@ -156,3 +156,6 @@ export const add_env = params => { return axios.post(`${host}/envs/`, params) };
 
 // 获取所有统计信息
 export const summary = () => { return axios.get(`${host}/summary/`) };
+
+// 在线运行
+export const run_code = (params) => { return axios.post(`${host}/projects/rundebugtalk/`, params) };

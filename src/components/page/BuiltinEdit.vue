@@ -3,32 +3,43 @@
 
         <el-row>
             <editor
-                style="font-size: 15px"
-                v-model="content"
+                style="font-size: 13px"
+                v-model="content.code"
                 @init="editorInit"
                 lang="python"
                 theme="monokai"
                 width="100%"
-                height="600px"
+                height="400px"
                 :options="{
                         enableSnippets:true,
                         enableBasicAutocompletion: true,
-                        enableLiveAutocompletion: true
+                        enableLiveAutocompletion: true,
+                        showPrintMargin: false
                     }">
 
+            </editor>
+            <editor
+                v-model="res"
+                lang="text"
+                theme="monokai"
+                width="100%"
+                height="200px"
+                :options="{
+                        showPrintMargin: false
+                    }">
             </editor>
         </el-row>
 
         <el-row class="btn_class">
             <el-button type="primary" size="medium" style="margin-right: 10px;" @click="saveBuiltin">保存</el-button>
-            <el-button type="danger" size="medium" @click="toIndexPage">回到主页</el-button>
+            <el-button type="danger" size="medium" @click="runCode">在线运行</el-button>
         </el-row>
 
     </div>
 </template>
 
 <script>
-    import { builtins_code, builtins_update } from '../../api/api';
+import { builtins_code, builtins_update, run_code } from '../../api/api';
     
     export default {
         beforeRouteEnter (to, from, next) {
@@ -41,10 +52,6 @@
                 vm.getCode();
             });
             next()
-
-
-
-
         },
         beforeRouteUpdate (to, from, next) {
             // 路由在同组件之间更新之前被调用
@@ -67,8 +74,11 @@
         name: 'basetable',
         data() {
             return {
-                content: '',
-                debugtalk_id: null
+                content: {
+                    code: ''
+                },
+                debugtalk_id: null,
+                res:''
             }
         },
         methods: {
@@ -85,7 +95,7 @@
                 // builtins_code(this.id)
                 builtins_code(this.debugtalk_id)
                 .then(response => {
-                    this.content = response.data.debugtalk;
+                    this.content.code = response.data.debugtalk;
                 })
                 .catch(error => {
                     this.$message.error('服务器错误');
@@ -104,9 +114,15 @@
                     this.$message.error('服务器错误');
                 })
             },
-            // 返回主页
-            toIndexPage() {
-                this.$router.push({name: 'index'})
+            // 在线运行
+            runCode() {
+                run_code(this.content)
+                    .then(response => {
+                        this.res = response.data.msg
+                    })
+                    .catch(error => {
+                        this.$message.error('服务器错误');
+                    })
             }
         },
         // mounted() {
@@ -122,5 +138,4 @@
     .btn_class{
         margin-top: 10px;
     }
-
 </style>

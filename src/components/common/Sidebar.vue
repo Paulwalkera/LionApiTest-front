@@ -160,6 +160,11 @@
                                 title: '报告列表'
                             }
                         ]
+                    },
+                    {
+                        icon: 'el-icon-loading',
+                        index: 'ApiTools',
+                        title: '调试工具',
                     }
                 ]
             }

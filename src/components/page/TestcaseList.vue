@@ -31,6 +31,7 @@
                 <el-table-column label="操作" align="center">
                     <template slot-scope="scope">
                         <el-button type="text" icon="el-icon-s-promotion" @click="handleRun(scope.$index, scope.row)">运行</el-button>
+                        <el-button type="text" icon="el-icon-loading" @click="sendMsg(scope.row.id)">在线调试</el-button>
                         <el-button type="text" icon="el-icon-edit" @click="linkTo(scope.row.id)">编辑</el-button>
                         <el-button type="text" icon="el-icon-delete" class="red" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
                     </template>
@@ -253,6 +254,10 @@
             linkTo(id) {
                 this.$router.push({ path: `/testcases_edit/${id}` });
             },
+            sendMsg(id){
+                this.$router.push('/ApiTools');
+                this.$EventBus.$emit('sendMsg',id)
+            }
         }
     }
 

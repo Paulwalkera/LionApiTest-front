@@ -1,6 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+// 路由跳转错误
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
+}
+
 Vue.use(Router);
 
 let router = new Router({
@@ -138,6 +144,12 @@ let router = new Router({
                     name: 'reports_view'
                 },
                 {
+                    path: '/ApiTools',
+                    component: resolve => require(['../components/page/ApiTools.vue'], resolve),
+                    meta: { title: '调试工具' },
+                    name: 'ApiTools'
+                },
+                {
                     path: '/404',
                     component: resolve => require(['../components/page/404.vue'], resolve),
                     meta: { title: '404' },
@@ -149,6 +161,7 @@ let router = new Router({
                     meta: { title: '403' },
                     name: '403'
                 },
+
             ]
         },
         {

@@ -28,6 +28,10 @@ const i18n = new VueI18n({
     messages
 });
 
+// 用例调试监听
+Vue.prototype.$EventBus = new Vue()
+
+// 路由跳转错误
 
 new Vue({
     router,
