@@ -1,9 +1,9 @@
 <template>
     <div class="table">
 
-        <el-row>
+        <el-scrollbar style="height:100%" wrap-style="overflow-x:hidden;overflow-y:hidden;">
             <editor
-                style="font-size: 13px"
+                style="font-size: 13px;"
                 v-model="content.code"
                 @init="editorInit"
                 lang="python"
@@ -16,28 +16,35 @@
                         enableLiveAutocompletion: true,
                         showPrintMargin: false
                     }">
-
             </editor>
+        </el-scrollbar>
+
+        <el-row>
             <el-button type="text" @click="Drawer = true">重复显示运行结果</el-button>
+
+            <el-scrollbar wrap-style="overflow-x:hidden;overflow-y:hidden;">
             <el-drawer class='Drawer'
                 :visible.sync="Drawer"
                 :modal=false
                 direction="rtl"
                 :withHeader=false
                 size="40%">
+                <el-scrollbar wrap-style="overflow-x:hidden;overflow-y:hidden;">
                 <editor
                     v-model="res"
                     lang="python"
                     theme="monokai"
                     width="100%"
-                    height="600px"
+                    height="595px"
                     :options="{
                         showPrintMargin: false
                     }">
                 </editor>
+                </el-scrollbar>
             </el-drawer>
-
+            </el-scrollbar>
         </el-row>
+
 
         <el-row class="btn_class">
             <el-button type="primary" size="medium" style="margin-right: 10px;" @click="back">返回</el-button>
@@ -89,7 +96,7 @@ import { builtins_code, builtins_update, run_code } from '../../api/api';
                 },
                 debugtalk_id: null,
                 res:'',
-                Drawer: false
+                Drawer: false,
             }
         },
         methods: {
@@ -154,8 +161,9 @@ import { builtins_code, builtins_update, run_code } from '../../api/api';
         margin-top: 10px;
     }
     .Drawer{
-        height: 600px;
+        height: 580px;
         margin-top: 110px;
         margin-right: 30px;
     }
+
 </style>

@@ -31,7 +31,6 @@ const i18n = new VueI18n({
 // 用例调试监听
 Vue.prototype.$EventBus = new Vue()
 
-// 路由跳转错误
 
 new Vue({
     router,
