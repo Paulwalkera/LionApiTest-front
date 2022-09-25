@@ -2,20 +2,15 @@
     <div class="header">
         <!-- 折叠按钮 -->
         <div class="collapse-btn" @click="collapseChage">
-            <i class="el-icon-menu"></i>
+            <i class="el-icon-lollipop"></i>
         </div>
         <div class="logo">自动化测试平台</div>
         <div class="header-right">
-            <div class="header-user-con">
-                <!-- 全屏显示 -->
-                <div class="btn-fullscreen" @click="handleFullScreen">
-                    <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
-                        <i class="el-icon-rank"></i>
-                    </el-tooltip>
-                </div>
 
+            <div class="header-user-con">
                 <!-- 用户头像 -->
-<!--                <div class="user-avator"><img src="../../assets/img/lemon_log.png"></div>-->
+                <div class="user-avator"><img src="../../assets/img/user_photo.gif"></div>
+
                 <!-- 用户名下拉菜单 -->
                 <el-dropdown class="user-name" trigger="hover" @command="handleCommand">
                     <span class="el-dropdown-link">
@@ -26,6 +21,14 @@
                         <el-dropdown-item divided  command="logout">退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
+
+                <!-- 全屏显示 -->
+                <div class="btn-fullscreen" @click="handleFullScreen" style='margin-left: 10px'>
+                    <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
+                        <i class="el-icon-rank"></i>
+                    </el-tooltip>
+                </div>
+
             </div>
         </div>
     </div>
@@ -118,7 +121,7 @@
     }
     .header-right{
         float: right;
-        padding-right: 50px;
+        padding-right: 10px;
     }
     .header-user-con{
         display: flex;

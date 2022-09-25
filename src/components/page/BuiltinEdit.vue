@@ -40,6 +40,7 @@
         </el-row>
 
         <el-row class="btn_class">
+            <el-button type="primary" size="medium" style="margin-right: 10px;" @click="back">返回</el-button>
             <el-button type="primary" size="medium" style="margin-right: 10px;" @click="saveBuiltin">保存</el-button>
             <el-button type="danger" size="medium" @click="runCode">在线运行</el-button>
         </el-row>
@@ -134,6 +135,9 @@ import { builtins_code, builtins_update, run_code } from '../../api/api';
                     .catch(error => {
                         this.$message.error('服务器错误');
                     })
+            },
+            back(){
+                this.$router.go(-1);
             }
         },
         // mounted() {
