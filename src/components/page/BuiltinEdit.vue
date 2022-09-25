@@ -9,7 +9,7 @@
                 lang="python"
                 theme="monokai"
                 width="100%"
-                height="400px"
+                height="600px"
                 :options="{
                         enableSnippets:true,
                         enableBasicAutocompletion: true,
@@ -18,16 +18,25 @@
                     }">
 
             </editor>
-            <editor
-                v-model="res"
-                lang="text"
-                theme="monokai"
-                width="100%"
-                height="200px"
-                :options="{
+            <el-button type="text" @click="Drawer = true">重复显示运行结果</el-button>
+            <el-drawer class='Drawer'
+                :visible.sync="Drawer"
+                :modal=false
+                direction="rtl"
+                :withHeader=false
+                size="40%">
+                <editor
+                    v-model="res"
+                    lang="python"
+                    theme="monokai"
+                    width="100%"
+                    height="600px"
+                    :options="{
                         showPrintMargin: false
                     }">
-            </editor>
+                </editor>
+            </el-drawer>
+
         </el-row>
 
         <el-row class="btn_class">
@@ -78,7 +87,8 @@ import { builtins_code, builtins_update, run_code } from '../../api/api';
                     code: ''
                 },
                 debugtalk_id: null,
-                res:''
+                res:'',
+                Drawer: false
             }
         },
         methods: {
@@ -105,10 +115,10 @@ import { builtins_code, builtins_update, run_code } from '../../api/api';
             saveBuiltin() {
                 // builtins_update(this.$route.params.id, this.content)
                 // builtins_update(this.id, this.content)
-                builtins_update(this.debugtalk_id, this.content)
+                builtins_update(this.debugtalk_id, this.content.code)
                 .then(response => {
                     this.$message.success('更新成功');
-                    // this.$router.go(-1);
+                    this.$router.go(-1);
                 })
                 .catch(error => {
                     this.$message.error('服务器错误');
@@ -119,6 +129,7 @@ import { builtins_code, builtins_update, run_code } from '../../api/api';
                 run_code(this.content)
                     .then(response => {
                         this.res = response.data.msg
+                        this.Drawer = true
                     })
                     .catch(error => {
                         this.$message.error('服务器错误');
@@ -137,5 +148,10 @@ import { builtins_code, builtins_update, run_code } from '../../api/api';
 <style scoped>
     .btn_class{
         margin-top: 10px;
+    }
+    .Drawer{
+        height: 600px;
+        margin-top: 110px;
+        margin-right: 30px;
     }
 </style>

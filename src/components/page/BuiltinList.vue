@@ -17,13 +17,17 @@
                 <el-table-column prop="project" label="项目名称" >
                 </el-table-column>
 
-                <el-table-column prop="name" label="内置函数名" align="center">
-                    
-
+                <el-table-column prop="name" label="内置函数" align="center">
                     <template slot-scope="scope">
-                        <el-link icon="el-icon-edit" type="primary" @click="linkTo(scope.row.id)">{{ scope.row.name }}</el-link>
+                        <el-link type="primary" @click="linkTo(scope.row.id)">{{ scope.row.name }}</el-link>
+                    </template>
+                </el-table-column>
 
-                </template>
+                <el-table-column label="操作" align="center">
+                    <template slot-scope="scope">
+                        <el-button type="text" icon="el-icon-edit" @click="linkTo(scope.row.id)">编辑</el-button>
+                        <el-button type="text" icon="el-icon-s-promotion" @click="linkTo(scope.row.id)">在线运行</el-button>
+                    </template>
                 </el-table-column>
 
             </el-table>
