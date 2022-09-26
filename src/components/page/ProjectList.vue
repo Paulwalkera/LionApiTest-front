@@ -325,6 +325,7 @@
                 run_by_project(this.project_id, this.env_id)
                 .then(response => {
                     // console.log(response.data);   // 通过项目运行用例
+                    this.runVisible = false
                     this.$router.push({ path: `/reports_view/${response.data.id}` })
                 })
                 .catch(error => {

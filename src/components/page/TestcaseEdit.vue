@@ -947,10 +947,11 @@
                         this.editVisible = false;
                         let that = this;
                         this.$message.success(`更新用例成功`);
+                        this.$router.push('/testcases_list')
                         // 1秒钟之后, 执行刷新
-                        setInterval(function () {
-                            that.$router.go();
-                        }, 1000);
+                        // setInterval(function () {
+                        //     that.$router.go();
+                        // }, 1000);
                     })
                     .catch(error => {
                         this.editVisible = false;
