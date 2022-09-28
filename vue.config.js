@@ -1,11 +1,11 @@
 module.exports = {
     pwa: {
         iconPaths: {
-            favicon32: 'favicon.ico',
-            favicon16: 'favicon.ico',
-            appleTouchIcon: 'favicon.ico',
-            maskIcon: 'favicon.ico',
-            msTileImage: 'favicon.ico',
+            favicon32: 'favicon1.ico',
+            favicon16: 'favicon1.ico',
+            appleTouchIcon: 'favicon1.ico',
+            maskIcon: 'favicon1.ico',
+            msTileImage: 'favicon1.ico',
         },
     },
     lintOnSave: process.env.NODE_ENV !== 'production',
