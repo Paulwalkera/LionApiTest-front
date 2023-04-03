@@ -46,3 +46,27 @@
 | 流量回放           | 🎉🎉🎉      |
 | 企微/钉钉/飞书通知 | 🎉🎉🎉      |
 
+⭐ 本地开发
+
+##### 1.拉取代码
+
+```shell
+$ git clone https://github.com/Paulwalkera/LionApiTest-front
+$ cd LionApiTest-front
+```
+
+##### 2.安装node
+
+##### 3.安装依赖
+
+```shell
+npm install
+```
+
+##### 4.启动项目
+
+```shell
+npm run dev
+```
+
+##### 5.打开浏览器输入: `http://localhost:8866`进入登录页
